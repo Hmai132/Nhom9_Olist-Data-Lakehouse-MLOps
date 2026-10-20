@@ -1,0 +1,363 @@
+{
+  "khoang_thoi_gian": [
+    "2016-09-04 21:15:19",
+    "2018-10-17 17:30:18"
+  ],
+  "khach_hang_duy_nhat": 96096,
+  "review_id_trung_khoa": 814,
+  "review_id_trung_so_dong": 1603,
+  "thanh_toan_bang_0": {
+    "so_dong": 9,
+    "theo_loai": {
+      "voucher": 6,
+      "not_defined": 3
+    }
+  },
+  "nhan_tre": {
+    "tong_don": 99441,
+    "du_dieu_kien": 96470,
+    "tre": 7826,
+    "ty_le_tre_pct": 8.11,
+    "tre_theo_timestamp": 7826,
+    "tre_theo_ngay": 6534,
+    "ty_le_theo_ngay_pct": 6.77,
+    "do_tre_trung_binh_trong_nhom_tre": 9.551775917880569,
+    "do_tre_trung_vi_trong_nhom_tre": 5.806481481481482
+  },
+  "thoi_gian_am_duyet_ban_giao": {
+    "so_don": 1359,
+    "trung_vi": -0.7153240740740741,
+    "nho_nhat": -171.21900462962964,
+    "theo_trang_thai": {
+      "delivered": 1350,
+      "shipped": 9
+    },
+    "trong_vong_1_ngay_pct": 66.29874908020604
+  },
+  "duyet_don_theo_thanh_toan": [
+    {
+      "payment_type": "credit_card",
+      "So_don": 76448,
+      "Trung_binh": 0.191,
+      "Trung_vi": 0.011,
+      "P75": 0.026,
+      "P95": 1.023,
+      "Ty_le_don_pct": 77.002
+    },
+    {
+      "payment_type": "boleto",
+      "So_don": 19754,
+      "Trung_binh": 1.38,
+      "Trung_vi": 1.211,
+      "P75": 1.661,
+      "P95": 3.565,
+      "Ty_le_don_pct": 19.897
+    },
+    {
+      "payment_type": "voucher",
+      "So_don": 1550,
+      "Trung_binh": 0.394,
+      "Trung_vi": 0.013,
+      "P75": 0.648,
+      "P95": 1.974,
+      "Ty_le_don_pct": 1.561
+    },
+    {
+      "payment_type": "debit_card",
+      "So_don": 1528,
+      "Trung_binh": 0.398,
+      "Trung_vi": 0.036,
+      "P75": 0.371,
+      "P95": 1.685,
+      "Ty_le_don_pct": 1.539
+    }
+  ],
+  "tong_thoi_gian_giao": {
+    "thuc_te_tb": 12.558217098051975,
+    "thuc_te_trung_vi": 10.217476851851853,
+    "thuc_te_p95": 29.274046296296298,
+    "thuc_te_max": 209.6286111111111,
+    "du_kien_tb": 23.736342826905506,
+    "du_kien_trung_vi": 23.23087962962963,
+    "chenh_tb": 11.17812572885353,
+    "chenh_trung_vi": 11.948101851851852,
+    "ty_le_giao_som_hon_du_kien_pct": 91.88763346117965
+  },
+  "khoang_cach": {
+    "so_don_co": 98177,
+    "so_don_thieu": 1264,
+    "trung_binh": 601.6878918905637,
+    "trung_vi": 433.81428689792364,
+    "min": 0.0,
+    "max": 8677.911621858062,
+    "so_don_duoi_1km": 52,
+    "phan_ra_thieu": {
+      "Có khoảng cách": 98177,
+      "Đơn không có sản phẩm (order_items)": 775,
+      "Thiếu tọa độ khách hàng (mã bưu chính không có trong geolocation)": 274,
+      "Thiếu tọa độ người bán": 215
+    },
+    "don_khong_co_item_theo_trang_thai": {
+      "unavailable": 603,
+      "canceled": 164,
+      "created": 5,
+      "invoiced": 2,
+      "shipped": 1
+    }
+  },
+  "do_nhay_toa_do_trung_vi": {
+    "so_don_so_sanh": 98177,
+    "so_don_lech_tren_10km": 517,
+    "ty_le_lech_tren_10km_pct": 0.5265999164773827,
+    "lech_toi_da_km": 3009.6253248230114,
+    "pearson_hai_cach": 0.9993347715815142
+  },
+  "tuong_quan_cuoc_phi": {
+    "n": 98177,
+    "pearson": 0.3135866409483745,
+    "spearman": 0.5853044216817069,
+    "n_khoi_luong": 98155,
+    "spearman_khoi_luong_cuoc_phi": 0.4921357429417928,
+    "spearman_khoang_cach_khoi_luong": 0.026373650151307906,
+    "spearman_rieng_phan": 0.6576570522875089
+  },
+  "tuong_quan_khoang_cach_thoi_gian": {
+    "n": 95994,
+    "pearson_thoi_gian_giao": 0.3939890390104409,
+    "spearman_thoi_gian_giao": 0.5430259324029809,
+    "spearman_thoi_gian_du_kien": 0.6180655785308138,
+    "pearson_delay": -0.07472663454629856,
+    "spearman_delay": -0.17926228686333545
+  },
+  "nhom_khoang_cach_chi2": {
+    "chi2": 465.66279603417127,
+    "p": 1.7844790496286186e-99
+  },
+  "hai_long": {
+    "so_don_co_review": 95824,
+    "ty_le_co_review_pct": 99.33,
+    "tb_dung_han": 4.294292012144172,
+    "tb_tre": 2.566505678109907,
+    "sd_dung_han": 1.146029138009129,
+    "sd_tre": 1.6578149983636137,
+    "chenh_lech": 1.7277863340342652,
+    "ktc95": [
+      1.689899839265401,
+      1.7656728288031294
+    ],
+    "t": 89.38438975067756,
+    "p": 0.0,
+    "cohen_d": 1.4458114007324125,
+    "mann_whitney_p": 0.0,
+    "xac_suat_uu_the": 0.77690688443594,
+    "ty_le_1_2_sao_pct": {
+      "Giao trễ": 54.06604881869208,
+      "Đúng hạn hoặc giao sớm": 9.221555527829135
+    },
+    "ty_le_5_sao_pct": {
+      "Giao trễ": 22.229473959013184,
+      "Đúng hạn hoặc giao sớm": 62.43548881049874
+    },
+    "theo_muc_tre": [
+      {
+        "muc_tre": "Đúng hạn/sớm",
+        "so_don": 88163,
+        "diem_tb": 4.294,
+        "ty_le_1_2_sao": 9.222
+      },
+      {
+        "muc_tre": "Trễ ≤ 3 ngày",
+        "so_don": 2636,
+        "diem_tb": 3.767,
+        "ty_le_1_2_sao": 19.12
+      },
+      {
+        "muc_tre": "Trễ 3–7 ngày",
+        "so_don": 1773,
+        "diem_tb": 2.317,
+        "ty_le_1_2_sao": 61.309
+      },
+      {
+        "muc_tre": "Trễ 7–14 ngày",
+        "so_don": 1748,
+        "diem_tb": 1.745,
+        "ty_le_1_2_sao": 78.146
+      },
+      {
+        "muc_tre": "Trễ > 14 ngày",
+        "so_don": 1504,
+        "diem_tb": 1.711,
+        "ty_le_1_2_sao": 78.79
+      }
+    ]
+  },
+  "thieu_moc_theo_trang_thai": {
+    "thieu_ngay_giao_theo_trang_thai": {
+      "shipped": 1107,
+      "canceled": 619,
+      "unavailable": 609,
+      "invoiced": 314,
+      "processing": 301,
+      "delivered": 8,
+      "created": 5,
+      "approved": 2
+    },
+    "delivered_thieu_duyet": 14,
+    "delivered_thieu_ban_giao": 2,
+    "delivered_thieu_giao_khach": 8,
+    "tong_delivered": 96478,
+    "trang_thai_dang_xu_ly": 1729
+  },
+  "canceled_co_ngay_giao": {
+    "so_don": 6,
+    "so_don_co_du_5_moc": 6,
+    "diem_review": [
+      1,
+      1,
+      1,
+      5,
+      1,
+      3
+    ]
+  },
+  "don_khong_co_item": {
+    "tong": 775,
+    "theo_trang_thai": {
+      "unavailable": 603,
+      "canceled": 164,
+      "created": 5,
+      "invoiced": 2,
+      "shipped": 1
+    }
+  },
+  "outlier": {
+    "Giá sản phẩm (price)": {
+      "Tong_so_dong_goc": 112650,
+      "So_dong_thieu_du_lieu": 0,
+      "So_dong_hop_le": 112650,
+      "Can_duoi": -102.6,
+      "Can_tren": 277.4,
+      "So_luong_outlier": 8427,
+      "Ty_le_outlier_pct": 7.48,
+      "Outlier_phia_tren": 8427,
+      "Outlier_phia_duoi": 0,
+      "Trung_vi": 74.99,
+      "Trung_binh": 120.65,
+      "Max": 6735.0,
+      "Skewness": 7.923,
+      "Nhan_xet_phan_phoi": "Lệch phải mạnh"
+    },
+    "Cước phí (freight_value)": {
+      "Tong_so_dong_goc": 112650,
+      "So_dong_thieu_du_lieu": 0,
+      "So_dong_hop_le": 112650,
+      "Can_duoi": 0.98,
+      "Can_tren": 33.25,
+      "So_luong_outlier": 12134,
+      "Ty_le_outlier_pct": 10.77,
+      "Outlier_phia_tren": 11613,
+      "Outlier_phia_duoi": 521,
+      "Trung_vi": 16.26,
+      "Trung_binh": 19.99,
+      "Max": 409.68,
+      "Skewness": 5.64,
+      "Nhan_xet_phan_phoi": "Lệch phải mạnh"
+    },
+    "Khối lượng sản phẩm (product_weight_g)": {
+      "Tong_so_dong_goc": 32951,
+      "So_dong_thieu_du_lieu": 2,
+      "So_dong_hop_le": 32949,
+      "Can_duoi": -2100.0,
+      "Can_tren": 4300.0,
+      "So_luong_outlier": 4551,
+      "Ty_le_outlier_pct": 13.81,
+      "Outlier_phia_tren": 4551,
+      "Outlier_phia_duoi": 0,
+      "Trung_vi": 700.0,
+      "Trung_binh": 2276.47,
+      "Max": 40425.0,
+      "Skewness": 3.605,
+      "Nhan_xet_phan_phoi": "Lệch phải mạnh"
+    },
+    "Số ngày trễ giao (delivery_delay_days)": {
+      "Tong_so_dong_goc": 99441,
+      "So_dong_thieu_du_lieu": 2971,
+      "So_dong_hop_le": 96470,
+      "Can_duoi": -31.03,
+      "Can_tren": 8.39,
+      "So_luong_outlier": 4871,
+      "Ty_le_outlier_pct": 5.05,
+      "Outlier_phia_tren": 2829,
+      "Outlier_phia_duoi": 2042,
+      "Trung_vi": -11.95,
+      "Trung_binh": -11.18,
+      "Max": 188.98,
+      "Skewness": 2.011,
+      "Nhan_xet_phan_phoi": "Lệch phải mạnh"
+    }
+  },
+  "xung_dot_geo": {
+    "Số bản ghi geolocation": 1000163.0,
+    "Số bản ghi trùng lặp hoàn toàn": 261831.0,
+    "Tỷ lệ bản ghi trùng lặp (%)": 26.18,
+    "Số mã bưu chính duy nhất": 19015.0,
+    "Số bản ghi trung bình mỗi mã (trung vị)": 29.0,
+    "Số bản ghi nhiều nhất của một mã": 1146.0,
+    "Số mã chỉ có 1 bản ghi": 1043.0,
+    "Số mã thuộc hơn 1 bang": 8.0,
+    "Số mã có hơn 1 cách viết tên thành phố": 8556.0,
+    "Số bản ghi có tọa độ ngoài lãnh thổ Brazil": 42.0,
+    "Số mã bưu chính bị ảnh hưởng bởi tọa độ ngoài lãnh thổ": 21.0,
+    "Số mã có độ phân tán tọa độ > 10 km": 596.0,
+    "Số mã có độ phân tán tọa độ > 50 km": 235.0,
+    "Số mã có độ phân tán tọa độ > 100 km": 162.0,
+    "Độ phân tán lớn nhất của một mã (km)": 5687.8,
+    "Số mã có tọa độ trung bình lệch trung vị > 5 km": 399.0,
+    "Số mã bưu chính của khách hàng không có trong geolocation": 278.0,
+    "Số đơn hàng bị ảnh hưởng (khách hàng thiếu tọa độ)": 278.0,
+    "Số mã bưu chính của người bán không có trong geolocation": 7.0
+  },
+  "toan_ven_tham_chieu": {
+    "order_items.order_id": 0,
+    "order_items.product_id": 0,
+    "order_items.seller_id": 0,
+    "orders.customer_id": 0,
+    "order_payments.order_id": 0,
+    "order_reviews.order_id": 0,
+    "products.product_category_name": 2,
+    "customers.customer_zip_code_prefix": 278,
+    "sellers.seller_zip_code_prefix": 7,
+    "orders (không có dòng order_items)": 775,
+    "orders (không có dòng order_payments)": 1,
+    "orders (không có dòng order_reviews)": 768
+  },
+  "nhat_quan_thoi_gian": {
+    "Đặt hàng -> Duyệt đơn": {
+      "Tổng số đơn": 99441,
+      "Số đơn thiếu dữ liệu (thiếu 1 trong 2 mốc)": 160,
+      "Tỷ lệ thiếu dữ liệu (%)": 0.16,
+      "Số đơn có đủ dữ liệu": 99281,
+      "Số đơn thời gian âm (bất thường)": 0,
+      "Tỷ lệ bất thường trên số đủ dữ liệu (%)": 0.0,
+      "Số đơn hợp lệ dùng để thống kê": 99281
+    },
+    "Duyệt đơn -> Bàn giao vận chuyển": {
+      "Tổng số đơn": 99441,
+      "Số đơn thiếu dữ liệu (thiếu 1 trong 2 mốc)": 1797,
+      "Tỷ lệ thiếu dữ liệu (%)": 1.81,
+      "Số đơn có đủ dữ liệu": 97644,
+      "Số đơn thời gian âm (bất thường)": 1359,
+      "Tỷ lệ bất thường trên số đủ dữ liệu (%)": 1.39,
+      "Số đơn hợp lệ dùng để thống kê": 96285
+    },
+    "Bàn giao vận chuyển -> Giao khách": {
+      "Tổng số đơn": 99441,
+      "Số đơn thiếu dữ liệu (thiếu 1 trong 2 mốc)": 2966,
+      "Tỷ lệ thiếu dữ liệu (%)": 2.98,
+      "Số đơn có đủ dữ liệu": 96475,
+      "Số đơn thời gian âm (bất thường)": 23,
+      "Tỷ lệ bất thường trên số đủ dữ liệu (%)": 0.02,
+      "Số đơn hợp lệ dùng để thống kê": 96452
+    }
+  }
+}

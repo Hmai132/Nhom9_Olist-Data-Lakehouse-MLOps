@@ -1,0 +1,9 @@
+﻿Trạng thái,Số đơn thiếu ngày giao khách,Tỷ lệ (%)
+shipped,1107,37.34
+canceled,619,20.88
+unavailable,609,20.54
+invoiced,314,10.59
+processing,301,10.15
+delivered,8,0.27
+created,5,0.17
+approved,2,0.07

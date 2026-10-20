@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Olist | Phân tích thương mại và giao vận</title>
+  <meta name="description" content="Phân tích đơn hàng, giá trị sản phẩm và chất lượng giao hàng Olist từ dữ liệu Gold.">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Điều hướng">
+      <div class="brand"><span class="brand-mark">O</span><span>olist<span class="brand-dot">.</span><small>DATA WAREHOUSE</small></span></div>
+      <div class="nav-label">KHÔNG GIAN PHÂN TÍCH</div>
+      <a class="nav-item active" href="#overview" data-nav="overview" aria-current="page"><span class="nav-icon">▦</span> Tổng quan</a>
+      <a class="nav-item" href="#delivery" data-nav="delivery"><span class="nav-icon">◷</span> Chẩn đoán giao trễ</a>
+      <a class="nav-item" href="#products" data-nav="products"><span class="nav-icon">◇</span> Sản phẩm & người bán</a>
+      <a class="nav-item" href="#customers" data-nav="customers"><span class="nav-icon">♧</span> Khách hàng & đánh giá</a>
+      <a class="nav-item" href="#predictions" data-nav="predictions"><span class="nav-icon">◎</span> Dự đoán giao hàng</a>
+      <div class="sidebar-foot">Olist Project <span>v0.2</span></div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div class="title-block"><span id="pageEyebrow" class="eyebrow">DASHBOARD / TỔNG QUAN</span><h1 id="pageTitle">Tổng quan Olist</h1><p id="pageSubtitle" class="subtitle">Quy mô đơn hàng, giá trị sản phẩm và chất lượng phục vụ.</p></div>
+        <div class="topbar-right">
+          <span id="dataBadge" class="data-badge"><span class="badge-dot"></span> Dữ liệu lịch sử</span>
+          <div id="globalFilterAnchor" class="filter-anchor">
+            <button id="filterToggle" class="filter-toggle" type="button" aria-expanded="false" aria-controls="filterPanel">☷ &nbsp; Bộ lọc <span id="filterCount" class="filter-count" hidden></span></button>
+            <form id="filterPanel" class="filter-panel" hidden aria-label="Bộ lọc dữ liệu">
+              <div class="filter-panel-title">Bộ lọc phân tích</div>
+              <label>Tháng đặt hàng<select id="month"></select></label>
+              <label>Bang khách hàng<select id="state"><option value="all">Tất cả bang</option></select></label>
+              <label>Trạng thái đơn<select id="status"><option value="all">Tất cả trạng thái</option></select></label>
+              <div class="filter-actions"><button id="resetButton" class="reset-button" type="button">Đặt lại</button><button class="apply-button" type="submit">Áp dụng</button></div>
+            </form>
+          </div>
+          <span id="updatedAt" class="updated-at"></span>
+        </div>
+      </header>
+      <div id="notice" class="notice" role="status" aria-live="polite">Đang đọc dữ liệu Gold…</div>
+      <div id="analysisToolbar" class="analysis-toolbar"><div id="filterSummary" class="filter-summary" aria-label="Bộ lọc đang áp dụng"></div><div class="month-nav" aria-label="Đổi tháng"><button id="previousMonth" type="button" aria-label="Tháng trước">‹</button><span id="toolbarMonth">—</span><button id="nextMonth" type="button" aria-label="Tháng sau">›</button></div></div>
+      <p id="partialNote" class="partial-note" hidden></p>
+      <section class="section" data-page="overview" aria-labelledby="overviewTitle">
+        <div class="section-heading"><div><span class="section-kicker">01 / SO SÁNH THÁNG</span><h2 id="overviewTitle">Chỉ số chính</h2></div><p id="comparisonLabel" class="section-meta"></p></div>
+        <div class="kpi-grid">
+          <article class="kpi-card"><div class="kpi-head">Đơn đã đặt</div><strong id="ordersValue">—</strong><div id="ordersMom" class="mom"></div><small id="ordersPrevious"></small></article>
+          <article class="kpi-card"><div class="kpi-head">Giá trị sản phẩm đặt</div><strong id="itemValue">—</strong><div id="itemMom" class="mom"></div><small id="itemPrevious"></small></article>
+          <article class="kpi-card"><div class="kpi-head">Giá trị sản phẩm/đơn</div><strong id="aovValue">—</strong><div id="aovMom" class="mom"></div><small id="aovPrevious"></small></article>
+          <article class="kpi-card"><div class="kpi-head">Đơn giao trễ</div><strong id="lateOrdersValue">—</strong><div id="lateOrdersMom" class="mom"></div><small id="lateOrdersPrevious"></small></article>
+          <article class="kpi-card"><div class="kpi-head">Tỷ lệ giao trễ</div><strong id="lateRateValue">—</strong><div id="lateRateMom" class="mom"></div><small id="lateRatePrevious"></small><small id="lateRateDenominator"></small></article>
+          <article class="kpi-card"><div class="kpi-head">Điểm đánh giá TB</div><strong id="reviewValue">—</strong><div id="reviewMom" class="mom"></div><small id="reviewPrevious"></small><small id="reviewDenominator"></small></article>
+        </div>
+      </section>
+      <div class="overview-chart-grid" data-page="overview">
+      <section class="section" aria-labelledby="trendTitle">
+        <div class="section-heading"><div><span id="trendKicker" class="section-kicker">02 / XU HƯỚNG</span><h2 id="trendTitle">Biến động theo tháng đặt hàng</h2><small class="action-hint">Bấm vào tháng để xem chi tiết</small></div><label class="dimension-label">Chỉ số <select id="trendMetric"><option value="orders">Số đơn</option><option value="ordered_item_value">Giá trị sản phẩm đặt</option><option value="aov">Giá trị sản phẩm/đơn</option><option value="late_rate">Tỷ lệ giao trễ</option><option value="review_score">Điểm đánh giá TB</option></select></label></div>
+        <div class="panel chart-panel"><div id="trendChart" class="chart" role="img" aria-label="Xu hướng chỉ số đã chọn trong 12 tháng gần tháng được chọn"></div></div>
+      </section>
+      <section class="section" aria-labelledby="stateSummaryTitle">
+        <div class="section-heading"><div><span class="section-kicker">03 / KHU VỰC</span><h2 id="stateSummaryTitle">Giao trễ theo bang</h2><small class="action-hint">Bấm vào bang để xem chi tiết</small></div><p class="section-meta">5 bang có nhiều đơn nhất</p></div>
+        <div class="panel state-summary-panel"><div class="state-summary-head"><span>Bang và số đơn</span><span>Tỷ lệ trễ tháng này / tháng trước</span></div><div id="overviewStateRows"></div></div>
+      </section>
+      </div>
+      <section class="section" data-page="overview" aria-labelledby="mixTitle"><div class="section-heading"><div><span class="section-kicker">04 / DANH MỤC</span><h2 id="mixTitle">Danh mục đóng góp giá trị đặt</h2></div></div><div class="panel overview-mix-panel" id="overviewCategoryRows"></div></section>
+      <section class="section" data-page="delivery" aria-labelledby="insightTitle"><div class="section-heading"><div><span class="section-kicker">01 / ĐIỂM NỔI BẬT</span><h2 id="insightTitle">Nhóm có tỷ lệ giao trễ cao</h2></div></div><div id="diagnosticHighlights" class="insight-grid"></div><p id="insightThreshold" class="insight-threshold"></p></section>
+      <section class="section" data-page="delivery" aria-labelledby="stageTitle">
+        <div class="section-heading"><div><span class="section-kicker">02 / CHẶNG GIAO HÀNG</span><h2 id="stageTitle">Thời gian ở từng chặng</h2></div><p id="stageCohort" class="section-meta"></p></div>
+        <div id="stageSummary" class="stage-summary"></div>
+        <div class="panel stage-panel"><div class="stage-legend"><span><i class="stage-dot late"></i> Đơn giao trễ</span><span><i class="stage-dot on-time"></i> Đơn đúng hạn</span></div><div id="stageRows"></div><p class="stage-note">Mỗi chặng chỉ tính các đơn có đủ mốc thời gian của chặng đó.</p></div>
+      </section>
+      <section class="section" data-page="delivery" aria-labelledby="matrixTitle">
+        <div class="section-heading"><div><span class="section-kicker">03 / CẮT CHÉO</span><h2 id="matrixTitle">Tỷ lệ trễ theo khoảng hẹn giao</h2></div><label class="dimension-label">Chiều hàng <select id="matrixDimension"><option value="customer_state">Bang khách hàng</option><option value="order_size_band">Số dòng hàng trong đơn</option><option value="purchase_weekday">Thứ đặt hàng</option></select></label></div>
+        <div class="panel matrix-panel"><div class="matrix-intro"><span id="matrixDescription"></span><span>Màu đậm hơn: tỷ lệ trễ cao hơn · Dưới 20 đơn: không tô màu</span></div><div id="matrixHolder" class="table-scroll"></div><p class="matrix-note">Số trong ngoặc là số đơn dùng để tính tỷ lệ.</p></div>
+      </section>
+      <section class="section" data-page="delivery" aria-labelledby="breakdownTitle">
+        <div class="section-heading"><div><span class="section-kicker">04 / PHÂN RÃ</span><h2 id="breakdownTitle">So sánh các nhóm đơn hàng</h2></div><label class="dimension-label">Chiều phân tích <select id="dimension"><option value="customer_state">Bang khách hàng</option><option value="order_status">Trạng thái đơn</option><option value="order_size_band">Số dòng sản phẩm trong đơn</option><option value="promise_window_band">Khoảng hẹn giao</option><option value="purchase_weekday">Thứ đặt hàng</option></select></label></div>
+        <div class="panel breakdown-panel"><div class="breakdown-intro"><span id="dimensionDescription"></span><span>Tỷ lệ so với toàn bộ nhóm lọc; chọn cột để sắp xếp</span></div><div class="table-scroll"><table><thead><tr><th><button type="button" data-sort="label">Nhóm</button></th><th><button type="button" data-sort="orders">Số đơn</button></th><th><button type="button" data-sort="eligible_orders">Đủ điều kiện</button></th><th><button type="button" data-sort="late_rate">Tỷ lệ trễ</button></th><th><button type="button" data-sort="late_gap">Chênh với chung</button></th><th><button type="button" data-sort="delivery_days">Giao TB</button></th><th><button type="button" data-sort="ordered_item_value">Giá trị đặt</button></th></tr></thead><tbody id="breakdownRows"></tbody></table></div></div>
+      </section>
+      <section class="section" data-page="products" aria-labelledby="productSummaryTitle">
+        <div class="section-heading"><div><span class="section-kicker">01 / QUY MÔ</span><h2 id="productSummaryTitle">Sản phẩm và người bán</h2></div></div>
+        <div class="kpi-grid product-kpi-grid">
+          <article class="kpi-card"><div class="kpi-head">Giá trị sản phẩm đặt</div><strong id="productItemValue">—</strong><div id="productItemValueMom" class="mom"></div><small>Giá sản phẩm, không gồm phí vận chuyển</small></article>
+          <article class="kpi-card"><div class="kpi-head">Dòng hàng</div><strong id="productItemLines">—</strong><div id="productItemLinesMom" class="mom"></div><small id="productItemLinesPrevious"></small></article>
+          <article class="kpi-card"><div class="kpi-head">Danh mục có giao dịch</div><strong id="productCategoryCount">—</strong><div id="productCategoryMom" class="mom"></div><small id="productCategoryPrevious"></small></article>
+          <article class="kpi-card"><div class="kpi-head">Người bán có giao dịch</div><strong id="productSellerCount">—</strong><div id="productSellerMom" class="mom"></div><small id="productSellerPrevious"></small></article>
+        </div>
+      </section>
+      <section class="section" data-page="products" aria-labelledby="productMixTitle">
+        <div class="section-heading"><div><span class="section-kicker">02 / DANH MỤC</span><h2 id="productMixTitle">Cơ cấu và biến động giá trị đặt</h2></div><p id="categoryConcentration" class="section-meta"></p></div>
+        <div class="two-column product-panels">
+          <div class="panel product-panel"><div class="product-panel-title">Danh mục đóng góp lớn nhất</div><div id="categoryRows"></div></div>
+          <div class="panel product-panel"><label class="dimension-label">Xu hướng danh mục <select id="categoryTrendSelect"></select></label><div id="categoryTrendChart" class="chart" role="img" aria-label="Giá trị sản phẩm đặt theo tháng của danh mục được chọn"></div></div>
+        </div>
+      </section>
+      <section class="section" data-page="products" aria-labelledby="categoryTableTitle">
+        <div class="section-heading"><div><span class="section-kicker">03 / CHI TIẾT DANH MỤC</span><h2 id="categoryTableTitle">Toàn bộ danh mục có giao dịch</h2></div><label class="dimension-label">Tìm danh mục <input id="categorySearch" type="search" placeholder="Nhập tên danh mục"></label></div>
+        <div class="panel breakdown-panel"><div class="breakdown-intro"><span id="categoryTableCount"></span><span>Số đơn chứa danh mục không cộng được giữa các dòng</span></div><div class="table-scroll"><table><thead><tr><th>Danh mục</th><th>Dòng hàng</th><th>Đơn chứa danh mục</th><th>Giá trị đặt</th><th>Tỷ trọng</th><th>MoM giá trị</th></tr></thead><tbody id="categoryTableRows"></tbody></table></div></div>
+      </section>
+      <section class="section" data-page="products" aria-labelledby="sellerTitle">
+        <div class="section-heading"><div><span class="section-kicker">04 / NGƯỜI BÁN</span><h2 id="sellerTitle">Mức độ tập trung và phân bố địa lý</h2></div><p id="sellerConcentration" class="section-meta"></p></div>
+        <div class="two-column product-panels">
+          <div class="panel product-panel"><div class="product-panel-title">10 người bán có giá trị đặt cao nhất</div><div id="sellerRows"></div><p class="panel-footnote">Chỉ số theo dòng hàng; một đơn có thể chứa nhiều người bán.</p></div>
+          <div class="panel product-panel"><div class="product-panel-title">Bang của người bán</div><div id="sellerStateRows" class="seller-state-rows"></div><p class="panel-footnote">Vị trí của người bán; bộ lọc bang phía trên là bang khách hàng.</p></div>
+        </div>
+      </section>
+      <section class="section" data-page="customers" aria-labelledby="customerSummaryTitle">
+        <div class="section-heading"><div><span class="section-kicker">01 / KHÁCH HÀNG</span><h2 id="customerSummaryTitle">Khách hàng và trải nghiệm</h2></div></div>
+        <div class="kpi-grid">
+          <article class="kpi-card"><div class="kpi-head">Người mua duy nhất</div><strong id="buyerValue">—</strong><div id="buyerMom" class="mom"></div><small id="buyerPrevious"></small></article>
+          <article class="kpi-card"><div class="kpi-head">Người đã mua trước tháng này</div><strong id="returningValue">—</strong><div id="returningMom" class="mom"></div><small id="returningPrevious"></small></article>
+          <article class="kpi-card"><div class="kpi-head">Tỷ trọng người mua quay lại</div><strong id="returningShareValue">—</strong><div id="returningShareMom" class="mom"></div><small id="returningShareDenominator"></small></article>
+          <article class="kpi-card"><div class="kpi-head">Tỷ lệ đơn đã giao có đánh giá</div><strong id="reviewCoverageValue">—</strong><div id="reviewCoverageMom" class="mom"></div><small id="reviewCoverageDenominator"></small></article>
+          <article class="kpi-card"><div class="kpi-head">Điểm đánh giá trung bình</div><strong id="customerReviewValue">—</strong><div id="customerReviewMom" class="mom"></div><small id="customerReviewDenominator"></small></article>
+          <article class="kpi-card accent"><div class="kpi-head">Tỷ lệ đánh giá thấp (≤2)</div><strong id="lowReviewValue">—</strong><div id="lowReviewMom" class="mom"></div><small id="lowReviewDenominator"></small></article>
+        </div>
+        <p class="panel-footnote">“Quay lại” nghĩa là có đơn trước tháng đang xem trong dữ liệu Olist.</p>
+      </section>
+      <section class="section" data-page="customers" aria-labelledby="customerTrendTitle">
+        <div class="section-heading"><div><span class="section-kicker">02 / XU HƯỚNG</span><h2 id="customerTrendTitle">Người mua và đánh giá theo tháng</h2></div><p class="section-meta">Tối đa 12 tháng đến tháng được chọn</p></div>
+        <div class="two-column product-panels">
+          <div class="panel product-panel"><div class="product-panel-title">Người mua mới và quay lại</div><div id="buyerTrendChart" class="chart" role="img" aria-label="Số người mua mới quan sát và quay lại theo tháng"></div><p class="panel-footnote"><span class="legend-key new"></span> Mới &nbsp; <span class="legend-key returning"></span> Đã mua trước tháng</p></div>
+          <div class="panel product-panel"><label class="dimension-label">Chỉ số đánh giá <select id="reviewTrendMetric"><option value="review_score">Điểm đánh giá trung bình</option><option value="low_share">Tỷ lệ đánh giá thấp</option></select></label><div id="reviewTrendChart" class="chart" role="img" aria-label="Xu hướng chỉ số đánh giá đã chọn"></div></div>
+        </div>
+      </section>
+      <section class="section" data-page="customers" aria-labelledby="customerSegmentTitle">
+        <div class="section-heading"><div><span class="section-kicker">03 / HÀNH VI MUA</span><h2 id="customerSegmentTitle">Đơn đầu tiên và các đơn mua tiếp theo</h2></div><p class="section-meta">Phân loại thứ tự đơn trên toàn bộ lịch sử quan sát</p></div>
+        <div class="panel breakdown-panel"><div class="table-scroll"><table><thead><tr><th>Nhóm đơn</th><th>Số đơn</th><th>Người mua</th><th>Giá trị đặt</th><th>Tỷ lệ trễ</th><th>Điểm đánh giá TB</th><th>Đánh giá thấp</th></tr></thead><tbody id="customerSegmentRows"></tbody></table></div><p class="panel-footnote inset">Số người mua có thể xuất hiện trong cả hai nhóm nếu họ đặt nhiều đơn trong tháng; không cộng cột này để tính người mua toàn tháng.</p></div>
+      </section>
+      <section class="section" data-page="customers" aria-labelledby="experienceTitle">
+        <div class="section-heading"><div><span class="section-kicker">04 / TRẢI NGHIỆM GIAO HÀNG</span><h2 id="experienceTitle">Đánh giá của đơn đúng hạn và giao trễ</h2></div><p class="section-meta">Chỉ đơn đã giao đủ điều kiện và có đánh giá</p></div>
+        <div id="deliveryReviewCards" class="experience-grid"></div>
+        <p class="panel-footnote">So sánh mô tả trong dữ liệu lịch sử; chênh lệch điểm đánh giá không chứng minh giao trễ là nguyên nhân duy nhất.</p>
+      </section>
+      <section class="section" data-page="customers" aria-labelledby="experienceBreakdownTitle">
+        <div class="section-heading"><div><span class="section-kicker">05 / PHÂN RÃ TRẢI NGHIỆM</span><h2 id="experienceBreakdownTitle">Đánh giá theo chiều dữ liệu</h2></div><label class="dimension-label">Chiều phân tích <select id="experienceDimension"><option value="customer_state">Bang khách hàng</option><option value="order_size_band">Số dòng hàng trong đơn</option><option value="promise_window_band">Khoảng hẹn giao</option><option value="purchase_weekday">Thứ đặt hàng</option></select></label></div>
+        <div class="panel breakdown-panel"><div class="breakdown-intro"><span>Điểm và tỷ lệ đánh giá tính trên đơn có phản hồi</span><span>Nhóm dưới 20 đơn đánh giá cần đọc thận trọng</span></div><div class="table-scroll"><table><thead><tr><th>Nhóm</th><th>Số đơn</th><th>Đơn có đánh giá</th><th>Điểm TB</th><th>Đánh giá thấp</th><th>Giao trễ</th><th>Đã giao có đánh giá</th></tr></thead><tbody id="experienceBreakdownRows"></tbody></table></div></div>
+      </section>
+      <section class="section" data-page="predictions" aria-labelledby="predictionScopeTitle">
+        <div class="prediction-scope"><strong id="predictionScopeTitle">Bản mô phỏng ưu tiên xử lý</strong><p>Dựa trên đơn Olist tháng 07–08/2018. Các hành động dưới đây là gợi ý từ mô hình trên dữ liệu lịch sử, không phải việc đang chờ xử lý hôm nay.</p></div>
+        <form id="predictionFilters" class="prediction-filters panel" aria-label="Lọc đơn trong bản mô phỏng">
+          <label>Tháng đặt hàng<select id="predictionMonth"><option value="all">Cả 07–08/2018</option><option value="201807">07/2018</option><option value="201808">08/2018</option></select></label>
+          <label>Bang khách hàng<select id="predictionState"><option value="all">Tất cả bang</option></select></label>
+          <label>Tìm mã đơn<input id="predictionOrderId" type="search" pattern="[0-9a-fA-F]{32}" maxlength="32" placeholder="Dán mã đơn để tra cứu"></label>
+          <button class="apply-button" type="submit">Áp dụng</button>
+        </form>
+      </section>
+      <section class="section" data-page="predictions" aria-labelledby="predictionResultsTitle">
+        <div class="section-heading"><div><span class="section-kicker">01 / ƯU TIÊN XỬ LÝ</span><h2 id="predictionResultsTitle">Nhóm đơn cần chú ý</h2></div><p id="predictionCohort" class="section-meta"></p></div>
+        <div class="kpi-grid prediction-kpis">
+          <button class="kpi-card prediction-action-card" type="button" data-prediction-action="manual_call"><span class="kpi-head">Ưu tiên gọi điện</span><strong id="predictionManual">—</strong><small>Nhóm rủi ro cao nhất · bấm xem đơn</small></button>
+          <button class="kpi-card prediction-action-card" type="button" data-prediction-action="automated_message"><span class="kpi-head">Nhắc tự động</span><strong id="predictionAutomated">—</strong><small>Nhóm tiếp theo · bấm xem đơn</small></button>
+          <button class="kpi-card prediction-action-card" type="button" data-prediction-action="none"><span class="kpi-head">Tiếp tục theo dõi</span><strong id="predictionMonitor">—</strong><small>Chưa cần can thiệp · bấm xem đơn</small></button>
+          <article class="kpi-card"><div class="kpi-head">Thời gian giao dự báo TB</div><strong id="predictionDays">—</strong><small>Tính trên <span id="predictionOrders">—</span> đơn đang lọc</small></article>
+        </div>
+        <p id="predictionFocus" class="prediction-focus"></p>
+      </section>
+      <section class="section" data-page="predictions" aria-labelledby="predictionWeeklyTitle">
+        <div class="prediction-insight-grid">
+          <div><div class="section-heading"><div><span class="section-kicker">02 / THEO THỜI GIAN</span><h2 id="predictionWeeklyTitle">Khối lượng theo tuần</h2></div></div><div class="panel prediction-insight-panel"><div class="prediction-legend"><span><i class="risk-dot red"></i> Gọi điện</span><span><i class="risk-dot yellow"></i> Nhắc tự động</span><span><i class="risk-dot green"></i> Theo dõi</span></div><div id="predictionWeekly" class="prediction-weekly"></div></div></div>
+          <div><div class="section-heading"><div><span class="section-kicker">03 / THEO KHU VỰC</span><h2 id="predictionStateTitle">Bang có nhiều đơn ưu tiên</h2></div></div><div class="panel prediction-insight-panel"><div id="predictionStateRows" class="prediction-state-rows"></div></div></div>
+        </div>
+      </section>
+      <section class="section" data-page="predictions" aria-labelledby="predictionOrdersTitle">
+        <div class="section-heading"><div><span class="section-kicker">04 / DANH SÁCH ƯU TIÊN</span><h2 id="predictionOrdersTitle">Đơn cần xem trước</h2><small class="action-hint">Bấm mã đơn để xem hai dự báo</small></div><button id="predictionClearAction" class="filter-reset" type="button" hidden>Xem mọi nhóm</button></div>
+        <p id="predictionQueueHint" class="prediction-queue-hint"></p>
+        <div class="panel breakdown-panel"><div class="table-scroll"><table><thead><tr><th>Hướng xử lý</th><th>Mã đơn</th><th>Bang</th><th>Ngày đặt</th><th>Hẹn giao</th><th>Giao dự báo</th><th>Điểm ưu tiên</th></tr></thead><tbody id="predictionRows"></tbody></table></div></div>
+      </section>
+      <details class="prediction-method panel" data-page="predictions"><summary>Phạm vi mô phỏng và độ tin cậy của dự báo</summary><div class="prediction-method-content"><p>Ba nhóm hành động được xếp hạng trong từng ca 8 giờ: nhóm đầu ưu tiên gọi điện, nhóm tiếp theo nhận nhắc tự động. Hạn mức mô phỏng là <strong id="predictionCapacity">—</strong> cuộc gọi/ca. Quyết định chỉ có sau khi ca kết thúc. Lọc tháng hoặc bang không xếp hạng lại đơn.</p><p>Điểm ưu tiên là điểm thô, <strong>không phải xác suất trễ</strong>. Trên tập test 07–08/2018, ROC AUC <strong id="predictionAuc">—</strong> và AP <strong id="predictionAp">—</strong>. Mô hình số ngày giao có sai số MAE <strong id="predictionMae">—</strong> ngày trên tập validation 05–06/2018; trang này không tính sai số hồi quy trên test. <span id="predictionInvalid"></span></p><p>Mô phỏng này được xây sau khi đã xem tập test; không thể dùng số liệu lịch sử để khẳng định gọi điện hay nhắn tin sẽ giảm trễ.</p></div></details>
+      <dialog id="predictionDetail" class="prediction-dialog" aria-labelledby="predictionDetailTitle">
+        <button id="predictionDetailClose" class="dialog-close" type="button" aria-label="Đóng chi tiết">×</button>
+        <span class="section-kicker">CHI TIẾT DỰ BÁO</span><h2 id="predictionDetailTitle">Đơn hàng</h2>
+        <p id="predictionDetailContext" class="dialog-context"></p>
+        <div class="prediction-detail-grid"><div><span>Thời gian giao dự báo</span><strong id="predictionDetailDays">—</strong></div><div><span>Điểm ưu tiên xử lý</span><strong id="predictionDetailScore">—</strong></div></div>
+        <p id="predictionDetailAlert" class="dialog-alert"></p><p class="dialog-context">Điểm rủi ro chưa được hiệu chuẩn thành xác suất. Đây là dự báo hồi cứu, không phải kết quả giao hàng thực tế.</p>
+      </dialog>
+      <footer class="footer"><span id="footerSource">Nguồn: Gold Olist · Thời gian theo ngày đặt hàng · Giá trị là giá sản phẩm đặt, không phải doanh thu thuần.</span><span id="footerScope">Chỉ số lịch sử thực tế</span></footer>
+    </main>
+  </div>
+</body>
+</html>

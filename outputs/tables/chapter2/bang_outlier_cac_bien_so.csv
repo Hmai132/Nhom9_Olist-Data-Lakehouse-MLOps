@@ -1,0 +1,5 @@
+﻿Bien_so,Tong_so_dong_goc,So_dong_thieu_du_lieu,So_dong_hop_le,Can_duoi,Can_tren,So_luong_outlier,Ty_le_outlier_pct,Outlier_phia_tren,Outlier_phia_duoi,Trung_vi,Trung_binh,Max,Skewness,Nhan_xet_phan_phoi
+Giá sản phẩm (price),112650,0,112650,-102.6,277.4,8427,7.48,8427,0,74.99,120.65,6735.0,7.923,Lệch phải mạnh
+Cước phí (freight_value),112650,0,112650,0.98,33.25,12134,10.77,11613,521,16.26,19.99,409.68,5.64,Lệch phải mạnh
+Khối lượng sản phẩm (product_weight_g),32951,2,32949,-2100.0,4300.0,4551,13.81,4551,0,700.0,2276.47,40425.0,3.605,Lệch phải mạnh
+Số ngày trễ giao (delivery_delay_days),99441,2971,96470,-31.03,8.39,4871,5.05,2829,2042,-11.95,-11.18,188.98,2.011,Lệch phải mạnh

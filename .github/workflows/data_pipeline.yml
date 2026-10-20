@@ -1,0 +1,57 @@
+name: Olist Data Lakehouse and ML Pipeline
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Check out project
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Verify Olist source CSVs are available
+        run: |
+          python -c "from pipeline.bronze import SOURCE_FILES, PROJECT_ROOT; missing = [name for name in SOURCE_FILES.values() if not (PROJECT_ROOT / 'data/raw' / name).is_file()]; assert not missing, f'Missing source CSVs: {missing}'"
+
+      - name: Load Bronze and build Silver and Gold
+        run: |
+          python -m pipeline.bronze
+          dbt run --project-dir warehouse --profiles-dir warehouse
+          dbt test --project-dir warehouse --profiles-dir warehouse
+
+      - name: Prepare cohorts and frozen models
+        run: |
+          python -m pipeline.ml_dataset
+          python -m pipeline.label_availability
+          python -m pipeline.regression_baseline
+          python -m pipeline.classification_baseline
+          python -m pipeline.classification_compare
+          python -m pipeline.historical_selection
+          python -m pipeline.historical_test
+          python -m pipeline.hybrid_alert_policy
+          python -m pipeline.dashboard_prediction_export
+
+      - name: Generate SHAP explanations and synchronize Gold
+        run: |
+          python -m pipeline.explainability
+          python -m pipeline.save_predictions_to_gold
+
+      - name: Run Python tests
+        run: python -m unittest discover tests -v

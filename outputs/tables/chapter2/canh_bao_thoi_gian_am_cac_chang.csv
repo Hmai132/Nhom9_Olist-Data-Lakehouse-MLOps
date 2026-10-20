@@ -1,0 +1,4 @@
+﻿Chặng xử lý,Tổng số đơn,Số đơn thiếu dữ liệu (thiếu 1 trong 2 mốc),Tỷ lệ thiếu dữ liệu (%),Số đơn có đủ dữ liệu,Số đơn thời gian âm (bất thường),Tỷ lệ bất thường trên số đủ dữ liệu (%),Số đơn hợp lệ dùng để thống kê
+Đặt hàng -> Duyệt đơn,99441,160,0.16,99281,0,0.0,99281
+Duyệt đơn -> Bàn giao vận chuyển,99441,1797,1.81,97644,1359,1.39,96285
+Bàn giao vận chuyển -> Giao khách,99441,2966,2.98,96475,23,0.02,96452

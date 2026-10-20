@@ -1,0 +1,9 @@
+﻿Trạng thái,Số đơn,Ghi chú
+shipped,1107,Chưa hoàn tất giao hàng
+canceled,625,Gồm 6 đơn có ngày giao nhưng trạng thái canceled (bị loại khỏi nhãn)
+unavailable,609,Chưa hoàn tất giao hàng
+invoiced,314,Chưa hoàn tất giao hàng
+processing,301,Chưa hoàn tất giao hàng
+delivered,8,Đã giao nhưng thiếu ngày giao thực tế
+created,5,Chưa hoàn tất giao hàng
+approved,2,Chưa hoàn tất giao hàng

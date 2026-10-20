@@ -1,0 +1,7 @@
+{
+  "shift_hours": 8,
+  "red_fraction": 0.05,
+  "yellow_cumulative_fraction": 0.25,
+  "default_manual_capacity_per_shift": 500,
+  "shift_capacity_overrides": {}
+}

@@ -1,0 +1,6 @@
+﻿order_status,tien_trinh_xu_ly,So_luong,Tong_so_don_trang_thai,Ty_le_pct
+canceled,Hủy/hết hàng trước khi duyệt đơn,141,625,22.56
+canceled,Đã bàn giao vận chuyển nhưng không hoàn tất giao hàng,69,625,11.04
+canceled,Đã duyệt đơn nhưng dừng lại trước khi vận chuyển,409,625,65.44
+canceled,Đã giao đến khách dù đơn ở trạng thái canceled/unavailable,6,625,0.96
+unavailable,Đã duyệt đơn nhưng dừng lại trước khi vận chuyển,609,609,100.0

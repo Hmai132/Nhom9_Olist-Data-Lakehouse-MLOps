@@ -1,0 +1,222 @@
+version: 2
+
+models:
+  - name: dim_customer
+    columns:
+      - name: customer_key
+        data_tests: [not_null, unique]
+      - name: customer_unique_id
+        data_tests: [not_null, unique]
+
+  - name: dim_seller
+    columns:
+      - name: seller_key
+        data_tests: [not_null, unique]
+      - name: seller_id
+        data_tests: [not_null, unique]
+      - name: seller_geolocation_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_geolocation')
+                field: geolocation_key
+
+  - name: dim_product
+    columns:
+      - name: product_key
+        data_tests: [not_null, unique]
+      - name: product_id
+        data_tests: [not_null, unique]
+
+  - name: dim_geolocation
+    columns:
+      - name: geolocation_key
+        data_tests: [not_null, unique]
+      - name: zip_code_prefix
+        data_tests: [not_null, unique]
+
+  - name: dim_date
+    columns:
+      - name: date_key
+        data_tests: [not_null, unique]
+      - name: date_day
+        data_tests: [not_null, unique]
+
+  - name: fact_delivery_performance
+    columns:
+      - name: order_id
+        data_tests: [not_null, unique]
+      - name: customer_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_key
+      - name: customer_geolocation_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_geolocation')
+                field: geolocation_key
+      - name: purchase_date_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: delivered_date_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: estimated_date_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+
+  - name: fact_order_item
+    columns:
+      - name: order_item_key
+        data_tests: [not_null, unique]
+      - name: order_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('fact_delivery_performance')
+                field: order_id
+      - name: product_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_product')
+                field: product_key
+      - name: seller_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_seller')
+                field: seller_key
+      - name: shipping_limit_date_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+
+  - name: ml_wide_delivery_table
+    columns:
+      - name: order_id
+        data_tests: [not_null, unique]
+      - name: prediction_cutoff_ts
+        data_tests: [not_null]
+
+  - name: dashboard_order_base
+    description: One row per order for dashboard drillthrough; purchase date is the default date role.
+    columns:
+      - name: order_id
+        data_tests: [not_null, unique]
+      - name: purchase_date_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: customer_state
+        data_tests: [not_null]
+      - name: purchase_weekday
+        data_tests: [not_null]
+      - name: order_size_band
+        data_tests: [not_null]
+      - name: promise_window_band
+        data_tests: [not_null]
+
+  - name: dashboard_order_daily
+    description: Additive order measures by purchase date, customer state and order status.
+    columns:
+      - name: purchase_date_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: customer_state
+        data_tests: [not_null]
+      - name: order_status
+        data_tests: [not_null]
+
+  - name: dashboard_category_daily
+    description: Item-grain totals by purchase date, customer state, order status and product category.
+    columns:
+      - name: purchase_date_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: customer_state
+        data_tests: [not_null]
+      - name: order_status
+        data_tests: [not_null]
+      - name: category_name
+        data_tests: [not_null]
+
+  - name: dashboard_seller_daily
+    description: Item-grain totals by purchase date, customer state, order status and seller.
+    columns:
+      - name: purchase_date_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: customer_state
+        data_tests: [not_null]
+      - name: order_status
+        data_tests: [not_null]
+      - name: seller_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_seller')
+                field: seller_key
+      - name: seller_city
+        data_tests: [not_null]
+      - name: seller_state
+        data_tests: [not_null]
+
+  - name: dashboard_customer_order_base
+    description: One order per row, with observed buyer sequence across the full Olist extract.
+    columns:
+      - name: order_id
+        data_tests: [not_null, unique]
+      - name: customer_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_key
+      - name: purchase_date_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: first_observed_purchase_date_key
+        data_tests: [not_null]
+      - name: observed_order_number
+        data_tests: [not_null]

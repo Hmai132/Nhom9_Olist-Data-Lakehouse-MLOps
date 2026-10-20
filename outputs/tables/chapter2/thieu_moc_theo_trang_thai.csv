@@ -1,0 +1,25 @@
+﻿Trạng thái,Mốc thời gian,Tổng số đơn,Số đơn thiếu mốc,Tỷ lệ thiếu (%)
+created,order_approved_at,5,5,100.0
+created,order_delivered_carrier_date,5,5,100.0
+created,order_delivered_customer_date,5,5,100.0
+approved,order_approved_at,2,0,0.0
+approved,order_delivered_carrier_date,2,2,100.0
+approved,order_delivered_customer_date,2,2,100.0
+invoiced,order_approved_at,314,0,0.0
+invoiced,order_delivered_carrier_date,314,314,100.0
+invoiced,order_delivered_customer_date,314,314,100.0
+processing,order_approved_at,301,0,0.0
+processing,order_delivered_carrier_date,301,301,100.0
+processing,order_delivered_customer_date,301,301,100.0
+shipped,order_approved_at,1107,0,0.0
+shipped,order_delivered_carrier_date,1107,0,0.0
+shipped,order_delivered_customer_date,1107,1107,100.0
+delivered,order_approved_at,96478,14,0.01
+delivered,order_delivered_carrier_date,96478,2,0.0
+delivered,order_delivered_customer_date,96478,8,0.01
+canceled,order_approved_at,625,141,22.56
+canceled,order_delivered_carrier_date,625,550,88.0
+canceled,order_delivered_customer_date,625,619,99.04
+unavailable,order_approved_at,609,0,0.0
+unavailable,order_delivered_carrier_date,609,609,100.0
+unavailable,order_delivered_customer_date,609,609,100.0

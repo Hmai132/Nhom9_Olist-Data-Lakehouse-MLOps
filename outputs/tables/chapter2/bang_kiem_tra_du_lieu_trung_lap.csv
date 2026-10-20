@@ -1,0 +1,10 @@
+﻿Tên bảng,Tổng số dòng,Số dòng trùng lặp,Tỷ lệ trùng lặp (%)
+customers,99441,0,0.0
+geolocation,1000163,261831,26.18
+order_items,112650,0,0.0
+order_payments,103886,0,0.0
+order_reviews,99224,0,0.0
+orders,99441,0,0.0
+products,32951,0,0.0
+sellers,3095,0,0.0
+category_translation,71,0,0.0

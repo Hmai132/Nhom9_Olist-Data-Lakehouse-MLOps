@@ -1,0 +1,5 @@
+﻿Lý do,Số đơn,Tỷ lệ (%)
+Có khoảng cách,98177,98.73
+Đơn không có sản phẩm (order_items),775,0.78
+Thiếu tọa độ khách hàng (mã bưu chính không có trong geolocation),274,0.28
+Thiếu tọa độ người bán,215,0.22

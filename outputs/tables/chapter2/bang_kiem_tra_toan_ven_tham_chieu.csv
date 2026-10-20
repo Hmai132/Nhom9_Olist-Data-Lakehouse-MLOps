@@ -1,0 +1,13 @@
+﻿Quan hệ kiểm tra (con),Bảng cha,Số bản ghi vi phạm,Ghi chú
+order_items.order_id,orders.order_id,0,Khóa ngoại
+order_items.product_id,products.product_id,0,Khóa ngoại
+order_items.seller_id,sellers.seller_id,0,Khóa ngoại
+orders.customer_id,customers.customer_id,0,Khóa ngoại
+order_payments.order_id,orders.order_id,0,Khóa ngoại
+order_reviews.order_id,orders.order_id,0,Khóa ngoại
+products.product_category_name,category_translation,2,"Danh mục thiếu bản dịch: pc_gamer, portateis_cozinha_e_preparadores_de_alimentos"
+customers.customer_zip_code_prefix,geolocation,278,Mã bưu chính thiếu tọa độ
+sellers.seller_zip_code_prefix,geolocation,7,Mã bưu chính thiếu tọa độ
+orders (không có dòng order_items),order_items,775,Đơn không có sản phẩm
+orders (không có dòng order_payments),order_payments,1,Đơn không có thanh toán
+orders (không có dòng order_reviews),order_reviews,768,Đơn chưa có đánh giá

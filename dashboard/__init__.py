@@ -1,0 +1,1 @@
+"""Local Olist dashboard application."""

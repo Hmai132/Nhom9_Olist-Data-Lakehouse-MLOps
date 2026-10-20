@@ -1,0 +1,9 @@
+﻿Tên bảng,Cột khóa kiểm tra,Số dòng trùng khóa,Số dòng thiếu khóa
+customers,customer_id,0,0
+orders,order_id,0,0
+order_items,"order_id, order_item_id",0,0
+order_payments,"order_id, payment_sequential",0,0
+order_reviews,review_id,814,0
+products,product_id,0,0
+sellers,seller_id,0,0
+category_translation,product_category_name,0,0

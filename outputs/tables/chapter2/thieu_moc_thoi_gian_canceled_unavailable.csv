@@ -1,0 +1,11 @@
+﻿Trạng thái,Mốc thời gian,Tổng số đơn,Số đơn thiếu mốc này,Tỷ lệ thiếu (%)
+canceled,order_purchase_timestamp,625,0,0.0
+canceled,order_approved_at,625,141,22.56
+canceled,order_delivered_carrier_date,625,550,88.0
+canceled,order_delivered_customer_date,625,619,99.04
+canceled,order_estimated_delivery_date,625,0,0.0
+unavailable,order_purchase_timestamp,609,0,0.0
+unavailable,order_approved_at,609,0,0.0
+unavailable,order_delivered_carrier_date,609,609,100.0
+unavailable,order_delivered_customer_date,609,609,100.0
+unavailable,order_estimated_delivery_date,609,0,0.0

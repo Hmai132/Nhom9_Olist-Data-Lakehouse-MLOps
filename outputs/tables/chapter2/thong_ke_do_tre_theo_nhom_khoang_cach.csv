@@ -1,0 +1,6 @@
+﻿nhom_kc,total_orders,delayed_orders,tb_thoi_gian_giao,trung_vi_thoi_gian_giao,tb_thoi_gian_du_kien,average_delay_days,average_distance_km,trung_vi_cuoc_phi,delay_rate_percent
+Dưới 250 km,27274,1719,7.5,6.0,16.98,-9.48,84.16,11.9,6.3
+250–500 km,27619,2072,12.23,10.04,23.83,-11.6,375.66,16.46,7.5
+500–1.000 km,25752,2165,14.31,12.15,26.31,-12.0,711.71,18.23,8.41
+1.000–2.000 km,9737,1052,17.98,15.37,30.12,-12.15,1402.89,23.91,10.8
+Từ 2.000 km,5612,768,21.18,18.26,33.17,-11.99,2318.91,30.11,13.68

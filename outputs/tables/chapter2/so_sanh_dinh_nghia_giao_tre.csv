@@ -1,0 +1,4 @@
+﻿Định nghĩa,Số đơn trễ,Số đơn đủ điều kiện,Tỷ lệ trễ (%)
+Theo timestamp (giao sau 00:00 ngày dự kiến là trễ),7826,96470,8.11
+Theo ngày lịch (giao trong ngày dự kiến là đúng hạn),6534,96470,6.77
+Chênh lệch: giao đúng ngày dự kiến nhưng bị gắn nhãn trễ theo timestamp,1292,96470,1.34

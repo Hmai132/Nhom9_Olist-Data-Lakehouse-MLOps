@@ -1,0 +1,20 @@
+﻿Chỉ tiêu,Giá trị
+Số bản ghi geolocation,1000163.0
+Số bản ghi trùng lặp hoàn toàn,261831.0
+Tỷ lệ bản ghi trùng lặp (%),26.18
+Số mã bưu chính duy nhất,19015.0
+Số bản ghi trung bình mỗi mã (trung vị),29.0
+Số bản ghi nhiều nhất của một mã,1146.0
+Số mã chỉ có 1 bản ghi,1043.0
+Số mã thuộc hơn 1 bang,8.0
+Số mã có hơn 1 cách viết tên thành phố,8556.0
+Số bản ghi có tọa độ ngoài lãnh thổ Brazil,42.0
+Số mã bưu chính bị ảnh hưởng bởi tọa độ ngoài lãnh thổ,21.0
+Số mã có độ phân tán tọa độ > 10 km,596.0
+Số mã có độ phân tán tọa độ > 50 km,235.0
+Số mã có độ phân tán tọa độ > 100 km,162.0
+Độ phân tán lớn nhất của một mã (km),5687.8
+Số mã có tọa độ trung bình lệch trung vị > 5 km,399.0
+Số mã bưu chính của khách hàng không có trong geolocation,278.0
+Số đơn hàng bị ảnh hưởng (khách hàng thiếu tọa độ),278.0
+Số mã bưu chính của người bán không có trong geolocation,7.0

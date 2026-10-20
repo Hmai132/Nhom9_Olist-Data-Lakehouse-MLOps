@@ -1,0 +1,10 @@
+﻿Chi_tieu,Gia_tri
+Số đơn hàng đã có khoảng cách (trước khi ghép cước phí),98177.0
+Số đơn ghép được cước phí,98666.0
+Số đơn đủ dữ liệu để tính tương quan,98177.0
+Pearson (khoảng cách - cước phí),0.3135866409483745
+Spearman (khoảng cách - cước phí),0.5853044216817069
+Số đơn có đủ khối lượng (để kiểm soát),98155.0
+Spearman (khối lượng - cước phí),0.4921357429417928
+Spearman (khoảng cách - khối lượng),0.026373650151307906
+Spearman riêng phần (khoảng cách - cước phí | khối lượng),0.6576570522875089

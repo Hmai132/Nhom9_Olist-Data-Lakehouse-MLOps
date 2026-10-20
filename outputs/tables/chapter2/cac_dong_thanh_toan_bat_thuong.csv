@@ -1,0 +1,10 @@
+﻿order_id,payment_sequential,payment_type,payment_installments,payment_value
+8bcbe01d44d147f901cd3192671144db,4,voucher,1,0.0
+fa65dad1b0e818e3ccc5cb0e39231352,14,voucher,1,0.0
+6ccb433e00daae1283ccc956189c82ae,4,voucher,1,0.0
+4637ca194b6387e2d538dc89b124b0ee,1,not_defined,1,0.0
+00b1cb0320190ca0daa2c88b35206009,1,not_defined,1,0.0
+45ed6e85398a87c253db47c2d9f48216,3,voucher,1,0.0
+fa65dad1b0e818e3ccc5cb0e39231352,13,voucher,1,0.0
+c8c528189310eaa44a745b8d9d26908b,1,not_defined,1,0.0
+b23878b3e8eb4d25a158f57d96331b18,4,voucher,1,0.0

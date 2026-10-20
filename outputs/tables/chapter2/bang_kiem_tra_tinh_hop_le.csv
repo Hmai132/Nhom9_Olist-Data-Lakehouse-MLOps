@@ -1,0 +1,12 @@
+﻿Tên bảng,Nội dung kiểm tra,Tổng số dòng,Số dòng không hợp lệ,Tỷ lệ không hợp lệ (%),Ghi chú
+order_reviews,Điểm đánh giá trong khoảng 1-5,99224,0,0.0,
+order_items,Giá sản phẩm > 0,112650,0,0.0,
+order_items,Phí vận chuyển >= 0,112650,0,0.0,
+order_payments,Giá trị thanh toán > 0,103886,9,0.01,Gồm voucher và not_defined
+products,product_weight_g >= 0,32951,0,0.0,Giá trị thiếu chưa tính
+products,product_length_cm >= 0,32951,0,0.0,Giá trị thiếu chưa tính
+products,product_height_cm >= 0,32951,0,0.0,Giá trị thiếu chưa tính
+products,product_width_cm >= 0,32951,0,0.0,Giá trị thiếu chưa tính
+orders,order_purchase_timestamp <= order_approved_at,99441,0,0.0,Chỉ so sánh khi đủ hai mốc
+orders,order_approved_at <= order_delivered_carrier_date,99441,1359,1.37,Chỉ so sánh khi đủ hai mốc
+orders,order_delivered_carrier_date <= order_delivered_customer_date,99441,23,0.02,Chỉ so sánh khi đủ hai mốc
