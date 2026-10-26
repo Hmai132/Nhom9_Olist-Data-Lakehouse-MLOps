@@ -1,0 +1,4 @@
+Hạn mức cảnh báo (Budget),Ngưỡng điểm (Threshold),Số đơn bị cảnh báo,Tỷ lệ cảnh báo thực tế,Số đơn trễ bắt được,Báo động giả (False Alarms),Recall (Độ nhạy),Precision (Độ chính xác),F1-Score
+5pct,0.6138,3040,24.31%,213,2827,35.44%,7.01%,0.117
+10pct,0.552,5116,40.91%,401,4715,66.72%,7.84%,0.1403
+20pct,0.4576,8504,67.99%,533,7971,88.69%,6.27%,0.1171

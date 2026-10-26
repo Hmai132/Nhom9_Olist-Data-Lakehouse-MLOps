@@ -1,0 +1,16 @@
+Mã đơn hàng,Điểm rủi ro,Ngày hẹn giao,Ngày dự báo (Hồi quy),Bang khách,Hành động đề xuất,Nguyên nhân 1 (SHAP),Nguyên nhân 2 (SHAP),Nguyên nhân 3 (SHAP)
+7e225c7be8d2...,0.9293,18.2,22.5,AL,Gọi điện can thiệp (manual_call),customer_state_AL,customer_state_SP,mean_seller_distance_km
+393e01721bf0...,0.9278,24.2,25.3,AL,Gọi điện can thiệp (manual_call),customer_state_AL,customer_state_SP,total_weight_g
+663f5bad78ee...,0.923,17.0,20.1,PB,Gọi điện can thiệp (manual_call),customer_state_PB,mean_seller_distance_km,customer_state_SP
+67a98da3237e...,0.9209,24.5,24.2,AL,Gọi điện can thiệp (manual_call),customer_state_AL,customer_state_SP,mean_seller_distance_km
+234ea4333eec...,0.9204,26.2,25.1,AL,Gọi điện can thiệp (manual_call),customer_state_AL,customer_state_SP,freight_total
+dea7cb1fd64c...,0.9122,24.1,23.9,AL,Gọi điện can thiệp (manual_call),customer_state_AL,customer_state_SP,mean_seller_distance_km
+cad9cc97c8f0...,0.9094,24.2,24.0,AL,Gọi điện can thiệp (manual_call),customer_state_AL,customer_state_SP,mean_seller_distance_km
+f6059478a309...,0.9067,18.3,22.0,SE,Gọi điện can thiệp (manual_call),customer_state_SE,customer_state_SP,mean_seller_distance_km
+0222b443ebbd...,0.9028,25.1,24.1,AL,Gọi điện can thiệp (manual_call),customer_state_AL,customer_state_SP,mean_seller_distance_km
+1a5800523e4a...,0.9027,15.6,20.9,SE,Gọi điện can thiệp (manual_call),customer_state_SE,mean_seller_distance_km,customer_state_SP
+b4454ac5d355...,0.901,20.3,22.3,AL,Gọi điện can thiệp (manual_call),customer_state_AL,customer_state_SP,mean_seller_distance_km
+43bdbd9dc093...,0.8998,23.5,24.7,PB,Gọi điện can thiệp (manual_call),customer_state_PB,mean_seller_distance_km,freight_total
+27bb59120b02...,0.8995,29.5,25.7,AL,Gọi điện can thiệp (manual_call),customer_state_AL,customer_state_SP,total_weight_g
+74d91d0ed661...,0.8976,20.3,22.0,AL,Gọi điện can thiệp (manual_call),customer_state_AL,customer_state_SP,mean_seller_distance_km
+226bc0c2f038...,0.8969,21.5,22.3,AL,Gọi điện can thiệp (manual_call),customer_state_AL,customer_state_SP,mean_seller_distance_km

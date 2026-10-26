@@ -1,0 +1,12 @@
+Tầng,Đối tượng / Bảng,Số dòng (Rows),Ý nghĩa nghiệp vụ
+Bronze,bronze.orders,99441,Toàn bộ đơn hàng gốc từ 9/2016 đến 10/2018
+Bronze,bronze.order_items,112650,Chi tiết từng dòng sản phẩm trong đơn
+Bronze,bronze.geolocation,1000163,Tọa độ địa lý mã bưu chính
+Bronze,bronze.customers / sellers,102536,99.441 khách hàng + 3.095 người bán
+Silver,silver.stg_orders,99441,"Chuẩn hóa kiểu timestamp, gắn cờ trạng thái"
+Silver,silver.geolocation_by_zip,19015,"Gộp tọa độ trung vị theo zip, loại bỏ tọa độ ngoài Brazil"
+Gold,gold.fact_delivery_performance,99441,Accumulating Snapshot Fact đo lường các mốc giao hàng
+Gold,gold.fact_order_item,112650,Item Transaction Fact phục vụ phân tích chi tiết
+Gold,gold.dim_customer / dim_seller,99191,96.096 khách duy nhất + 3.095 người bán (Khóa MD5)
+Gold,gold.ml_wide_delivery_table,99441,Bảng OBT 17 đặc trưng học máy tại mốc đặt hàng
+Gold,gold.fact_delivery_predictions,12507,Bảng Fact lưu kết quả dự báo ML & XAI kỳ kiểm tra

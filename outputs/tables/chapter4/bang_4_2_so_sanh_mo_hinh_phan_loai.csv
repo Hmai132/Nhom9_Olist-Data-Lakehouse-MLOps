@@ -1,0 +1,4 @@
+Mô hình,ROC-AUC,Số đơn trễ phát hiện (10% budget),Recall @ 10%,Precision @ 10%,Độ nâng (Lift over prevalence),Trạng thái chọn
+logistic_regression,0.7147,166,32.30%,12.93%,3.23x,Được chọn đóng băng
+random_forest,0.6736,121,23.54%,9.42%,2.36x,Loại
+lightgbm,0.7095,140,27.24%,10.90%,2.72x,Loại
