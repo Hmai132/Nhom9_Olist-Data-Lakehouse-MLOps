@@ -1,0 +1,30 @@
+{
+  "scope": "retrospective July-August 2018 eventually label-eligible test orders",
+  "rows": 12507,
+  "regression_model": "regression_linear_asof.joblib",
+  "regression_display_only_on_test": true,
+  "regression_test_metrics_computed": false,
+  "regression_validation_mae_days": 5.152422647571378,
+  "classification_model": "logistic_regression",
+  "classification_test_roc_auc": 0.6611230568460148,
+  "classification_test_average_precision": 0.07809516100496725,
+  "classification_test_alert_fraction": 0.4090509314783721,
+  "frozen_score_threshold": 0.552016744072306,
+  "score_is_calibrated_probability": false,
+  "negative_regression_predictions": 2,
+  "operational_scenario": "exploratory eight-hour shift ranking: top 5% manual, next to 25% automated, subject to capacity",
+  "policy_shift_hours": 8,
+  "policy_default_manual_capacity_per_shift": 500,
+  "policy_risk_zone_counts": {
+    "green": 9450,
+    "yellow": 2519,
+    "red": 538
+  },
+  "source_sha256": {
+    "test_parquet": "9539196238ec1c47ad729f91722baea01b209cc2969d6656038ff6c30391e361",
+    "classifier_predictions": "16424da5d393d5031db7f89c18c3b77322c7a2f51fecfc46bb8c8c14e9345c37",
+    "regression_model": "21973631c6c0f70c9daaee4391f93bc67ecb677eaaf562e0b8ff6c9a9c4e69ae",
+    "policy_decisions": "238fcb6231ed50d30aa93bd93d0d12ed37805eb1e47bd7f0ce17f2857035ce10"
+  },
+  "output_sha256": "f40a7042ff293b259ab0353e3d761d879128a395db5799a3bd89b2cdf8314e0b"
+}

@@ -1,8 +1,12 @@
 .venv/
 __pycache__/
 *.pyc
-data/warehouse/
-data/ml/
+data/warehouse/*
+!data/warehouse/dashboard.duckdb
+data/ml/*
+!data/ml/models/
+data/ml/models/*
+!data/ml/models/dashboard_joint_predictions*
 warehouse/target/
 warehouse/logs/
 warehouse/.user.yml

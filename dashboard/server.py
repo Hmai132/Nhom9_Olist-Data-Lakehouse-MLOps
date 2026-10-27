@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import calendar
 import json
+import os
 from datetime import datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -14,7 +15,8 @@ import duckdb
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_DATABASE = PROJECT_ROOT / "data/warehouse/olist.duckdb"
+DASHBOARD_DB = PROJECT_ROOT / "data/warehouse/dashboard.duckdb"
+DEFAULT_DATABASE = DASHBOARD_DB if DASHBOARD_DB.exists() else (PROJECT_ROOT / "data/warehouse/olist.duckdb")
 PREDICTION_EXPORT = PROJECT_ROOT / "data/ml/models/dashboard_joint_predictions.csv"
 PREDICTION_METADATA = PROJECT_ROOT / "data/ml/models/dashboard_joint_predictions_metadata.json"
 ASSETS = {
@@ -563,13 +565,15 @@ class DashboardHandler(BaseHTTPRequestHandler):
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--database", type=Path, default=DEFAULT_DATABASE)
-    parser.add_argument("--port", type=int, default=8501)
+    parser.add_argument("--host", type=str, default="0.0.0.0")
+    parser.add_argument("--port", type=int, default=int(os.environ.get("PORT", 8501)))
     args = parser.parse_args()
     if not args.database.exists():
         parser.error(f"DuckDB database not found: {args.database}")
     DashboardHandler.database = args.database
-    server = ThreadingHTTPServer(("127.0.0.1", args.port), DashboardHandler)
-    print(f"Olist dashboard: http://127.0.0.1:{server.server_port}", flush=True)
+    server = ThreadingHTTPServer((args.host, args.port), DashboardHandler)
+    display_host = "localhost" if args.host in ("0.0.0.0", "127.0.0.1") else args.host
+    print(f"Olist dashboard: http://{display_host}:{server.server_port}", flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
